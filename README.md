@@ -47,3 +47,37 @@ Is necessary to have the document with which test cases were documented, because
 * To locate "test->resources->features" folder, in which a folder is created with the name of the sprint to be worked on. Inside it, all the features are stored, and the file is named correspondingly to the test case with the extension ".feature", for example, "testcase001.feature".
 * To locate "test->java" folder, create the Java file with the ".Test" extension in this folder. It is important to generate a reference to the test case that will be executed
 * To identify "test->java->steps" folder, create the folder with the name of the sprint that will be worked on. Inside, generate the class with the name of the test case, for example "TC_Digital_Download_C_001.java". In this class, define the steps using Java annotations "@Given()", "@When()", and "@Then()"
+
+## Example Steps
+
+> Structure project
+
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/structureproject.jpg)
+
+> Structure folders
+
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/structurejavafolder.jpg)
+
+> Create test
+> 
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/createnewtest.jpg)
+
+> Create page
+
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/createnewpage.jpg)
+
+> Create resource
+
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/createnewresource.jpg)
+
+> Create steps
+
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/createnewstep.jpg)
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/exampleclasstep.jpg)
+
+> Create feature
+
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/createnewfeature.jpg)
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/typefile.jpg)
+![](https://github.com/JuanAntonioMendoza/TestCases/blob/main/imgManual/examplefeature.jpg)
+
