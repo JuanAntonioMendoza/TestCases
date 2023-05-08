@@ -42,6 +42,6 @@ Feature: Purchase process
 ##Steps to generate a Test Case:
 Is necessary to have the document with which the test cases were documented, because the name of the test case is referenced throughout the process, for example "TC_Digital_DownLoad_C_001", as well as the sprint that is being worked on for better organization in the project folders.
 
-	To locate  test->resources->features folder, in which a folder is created with the name of the sprint to be worked on. Inside it, all the features are stored, and the file is named correspondingly to the test case with the extension ".feature", for example, "testcase001.feature".
+	To locate "test->resources->features" folder, in which a folder is created with the name of the sprint to be worked on. Inside it, all the features are stored, and the file is named correspondingly to the test case with the extension ".feature", for example, "testcase001.feature".
 	To locate "test->java" folder, create the Java file with the ".Test" extension in this folder. It is important to generate a reference to the test case that will be executed
-	To identify the "test->java->steps" folder, create the folder with the name of the sprint that will be worked on. Inside, generate the class with the name of the test case, for example "TC_Digital_Download_C_001.java". In this class, define the steps using Java annotations "@Given()", "@When()", and "@Then()"
+	To identify "test->java->steps" folder, create the folder with the name of the sprint that will be worked on. Inside, generate the class with the name of the test case, for example "TC_Digital_Download_C_001.java". In this class, define the steps using Java annotations "@Given()", "@When()", and "@Then()"
