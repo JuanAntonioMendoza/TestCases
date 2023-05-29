@@ -1,5 +1,7 @@
 package steps.sprintone;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.Status;
 import pages.DigitalDownloads;
 import pages.LogIn;
 import pages.Main;
@@ -13,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import resources.Ashot;
 import resources.DriverFactory;
+import resources.Reporter;
 import resources.UserHelper;
 
 public class TC_Digital_DownLoad_H_002 {
@@ -23,6 +26,7 @@ public class TC_Digital_DownLoad_H_002 {
     Register register = Register.getRegister();
     Ashot shotTool = new Ashot();
     DigitalDownloads digitalDownloads = DigitalDownloads.getDigitalDownloads();
+    ExtentReports reporter = Reporter.getExtentReports();
 
     @Given("The hot user is on the main page")
     public void user_on_main_page() {
@@ -38,10 +42,11 @@ public class TC_Digital_DownLoad_H_002 {
 
     @When("The hot user enters name of a product {string} in the search text box")
     public void user_enters_name(String product) {
-        WebElement inputElement = driver.findElement(By.id("small-searchterms"));
-        inputElement.sendKeys(product);
+        digitalDownloads
+                .contendValue(By.id("small-searchterms"));
         shotTool.newAshot("TC_Digital_DownLoad_H_002", "Whenashot");
-        driver.findElement(By.className("search-box-button")).click();
+        main
+                .searchBox(product);
     }
 
     @Then("The hot user should be see, picture, name, ranking, cart, price")
@@ -54,5 +59,6 @@ public class TC_Digital_DownLoad_H_002 {
                 .IsDisplayed(digitalDownloads.addCartProductItem())
                 .IsDisplayed(digitalDownloads.priceProductItem());
         shotTool.newAshot("TC_Digital_DownLoad_H_002", "Thenashot");
+
     }
 }

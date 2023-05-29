@@ -30,4 +30,8 @@ public class DriverFactory {
     public void Ending() {
         // driver.close();
     }
+
+    public void closeDriver(){
+        driver.close();
+    }
 }

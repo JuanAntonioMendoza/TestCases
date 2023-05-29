@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 import resources.DriverFactory;
 import java.util.List;
 
@@ -20,6 +22,11 @@ public class DigitalDownloads {
 
     public DigitalDownloads IsDisplayed(By value) {
         Assert.assertTrue(driver.findElement(value).isDisplayed());
+        return this;
+    }
+
+    public DigitalDownloads contendValue(By value){
+        Assert.assertEquals("",driver.findElement(value).getText());
         return this;
     }
 
@@ -47,7 +54,7 @@ public class DigitalDownloads {
         return By.xpath("/html/body/div[6]/div[3]/div/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div/div/div[2]/div[3]/div[1]/span");
     }
 
-    public DigitalDownloads validateLabelOnDivItem(String classdiv) {
+    public DigitalDownloads validateLabelOnDivItem(String classdiv) throws Exception {
 
         List<WebElement> elementsDiv = driver.findElements(By.cssSelector("div." + classdiv));
 
@@ -82,9 +89,10 @@ public class DigitalDownloads {
                         if(classspan.equalsIgnoreCase("price actual-price")){
                             if(!elemento.getText().isEmpty())
                                 System.out.println("Passed");
-                            else
+                            else{
                                 System.out.println("Failed");
-                            throw new AssertionError("Class don't have anything: " + classspan );
+                                throw new Exception("Class don't have anything: " + classspan );
+                            }
                         }
                         break;
                     default:

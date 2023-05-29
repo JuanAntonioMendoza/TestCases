@@ -15,6 +15,10 @@ public class LogIn {
         return new LogIn();
     }
 
+    public LogIn openLogIn(){
+        driver.findElement(By.xpath("/html/body/div[6]/div[1]/div[1]/div[2]/div[1]/ul/li[2]/a")).click();
+        return this;
+    }
     public LogIn inputEmail(String email) {
         WebElement inputElement = driver.findElement(By.id("Email"));
         inputElement.sendKeys(email);

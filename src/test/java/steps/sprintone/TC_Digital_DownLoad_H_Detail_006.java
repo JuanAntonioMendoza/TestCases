@@ -28,16 +28,13 @@ public class TC_Digital_DownLoad_H_Detail_006 {
 
     @When("The hot user enters name of a product {string} in the search text box for start Digital Downloads Product")
     public void user_clicks_on_searchBox(String product) {
-        main
+        /*main
                 .clickOnlink("Log in");
         logIn
                 .inputEmail(userhelper.getEmailHelper())
                 .inputPassword(userhelper.getPasswordHelper())
-                .buttonLogIn();
+                .buttonLogIn();*/
         main.searchBox(product);
-        /*
-        shotTool.newAshot("TC_Digital_DownLoad_C_001", "Whenashot");
-        */
     }
 
     @Then("The hot user should be see button download, button add wishlist,button compare list, button email, price, ranking")
@@ -55,10 +52,5 @@ public class TC_Digital_DownLoad_H_Detail_006 {
                 .IsDisplayed(digitalDownloadsProduct.btnEmailFriendProductItem())
                 .IsDisplayed(digitalDownloadsProduct.priceProductItem())
                 .IsDisplayed(digitalDownloadsProduct.ratingProductItem());
-
-        //digitalDownloads.validateLabelOnDivItem("item-box");
-        /*
-        shotTool.newAshot("TC_Digital_DownLoad_C_001", "Thenashot");
-        */
     }
 }

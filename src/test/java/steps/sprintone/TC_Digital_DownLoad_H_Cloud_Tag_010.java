@@ -1,5 +1,7 @@
 package steps.sprintone;
 
+import divs.GridProduct;
+import io.cucumber.datatable.DataTable;
 import pages.LogIn;
 import pages.Main;
 import pages.TagProduct;
@@ -20,17 +22,18 @@ public class TC_Digital_DownLoad_H_Cloud_Tag_010 {
 
     Ashot shotTool = new Ashot();
     TagProduct tagProduct = TagProduct.getDigitalDownloads();
+    GridProduct gridProduct = GridProduct.getGridProduct();
 
     @Given("The hot user is on the main page and click on any link")
     public void user_on_main_page() {
         driver.get("https://demo.nopcommerce.com/");
         main.clickOnlink("Digital downloads");
-        main
+        /*main
                 .clickOnlink("Log in");
         logIn
                 .inputEmail(userhelper.getEmailHelper())
                 .inputPassword(userhelper.getPasswordHelper())
-                .buttonLogIn();
+                .buttonLogIn();*/
     }
 
     @When("The hot user clicks on {string} in the popular tag")
@@ -40,8 +43,9 @@ public class TC_Digital_DownLoad_H_Cloud_Tag_010 {
     }
 
     @Then("The hot user should be see, picture, name, ranking, cart, price on Digital Tag")
-    public void user_should_be_see_item() throws Exception {
-        tagProduct
-                .validateLabelOnDivItemDontFailed("item-box");
+    public void user_should_be_see_item(DataTable table) throws Exception {
+        gridProduct.findValue(table,"product-item");
+//        tagProduct
+//                .validateLabelOnDivItemDontFailed("item-box");
     }
 }

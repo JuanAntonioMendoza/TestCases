@@ -23,9 +23,6 @@ public class TC_Digital_DownLoad_C_Detail_005 {
     @When("The cold user enters name of a product {string} in the search text box for start Digital Downloads Product")
     public void user_clicks_on_searchBox(String product) {
         main.searchBox(product);
-        /*
-        shotTool.newAshot("TC_Digital_DownLoad_C_001", "Whenashot");
-        */
     }
 
     @Then("The cold user should be see button download, button add wishlist,button compare list, button email, price, ranking")
@@ -44,9 +41,5 @@ public class TC_Digital_DownLoad_C_Detail_005 {
                 .IsDisplayed(digitalDownloadsProduct.priceProductItem())
                 .IsDisplayed(digitalDownloadsProduct.ratingProductItem());
 
-        //digitalDownloads.validateLabelOnDivItem("item-box");
-        /*
-        shotTool.newAshot("TC_Digital_DownLoad_C_001", "Thenashot");
-        */
     }
 }

@@ -32,9 +32,6 @@ public class TC_Digital_DownLoad_C_Product_Review_007 {
                 .clickOnLink("Night Visions");
         digitalDownloadsProduct
                 .clickOnLink("Add your review");
-        /*
-        shotTool.newAshot("TC_Digital_DownLoad_C_001", "Whenashot");
-        */
     }
 
     @Then("The cold user should be see form review disable")
@@ -43,9 +40,5 @@ public class TC_Digital_DownLoad_C_Product_Review_007 {
                 .IsDisplayed(review.errorAlert())
                 .disableLabel("AddProductReview_Title")
                 .disableLabel("AddProductReview_ReviewText");
-
-        /*
-        shotTool.newAshot("TC_Digital_DownLoad_C_001", "Thenashot");
-        */
     }
 }

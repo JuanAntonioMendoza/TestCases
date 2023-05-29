@@ -1,5 +1,7 @@
 package steps.sprintone;
 
+import divs.GridProduct;
+import io.cucumber.datatable.DataTable;
 import pages.Main;
 import pages.TagProduct;
 import io.cucumber.java.en.Given;
@@ -16,6 +18,7 @@ public class TC_Digital_DownLoad_C_Cloud_Tag_009 {
 
     Ashot shotTool = new Ashot();
     TagProduct tagProduct = TagProduct.getDigitalDownloads();
+    GridProduct gridProduct = GridProduct.getGridProduct();
 
     @Given("The cold user is on the main page and click on any link")
     public void user_on_main_page() {
@@ -30,8 +33,9 @@ public class TC_Digital_DownLoad_C_Cloud_Tag_009 {
     }
 
     @Then("The cold user should be see, picture, name, ranking, cart, price on Digital Tag")
-    public void user_should_be_see_item() throws Exception {
-        tagProduct
-                .validateLabelOnDivItemDontFailed("item-box");
+    public void user_should_be_see_item(DataTable table) throws Exception {
+        gridProduct.findValue(table,"product-item");
+//        tagProduct
+//                .validateLabelOnDivItemDontFailed("item-box");
     }
 }

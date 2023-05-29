@@ -27,4 +27,10 @@ public class Main {
         return this;
     }
 
+    public  Main clicOnMainImage(){
+        WebElement link = driver.findElement(By.xpath("/html/body/div[6]/div[1]/div[2]/div[1]/a/img"));
+        link.click();
+        return this;
+    }
+
 }
