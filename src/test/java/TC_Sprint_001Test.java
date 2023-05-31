@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
         features = {
                 "src/test/resources/features/sprintone/TC_NopCommerce_001.feature",
         },
+//        tags = "@TC_Digital_DownLoad_H_Product_Review_008",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports.html",

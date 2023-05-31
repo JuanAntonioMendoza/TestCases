@@ -10,6 +10,7 @@ import resources.UserHelper;
 import resources.genkiresources.DataTableGridGenki;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -56,11 +57,12 @@ public class Review {
                +  " | Date: " + formattedDate;
         addProductReview_ReviewText.sendKeys(review);
         driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/div[1]/form/div[2]/button")).click();
-        validateReview(formattedDate);
+
+        validateReview(review);
         return this;
     }
 
-    public void validateReview(String formattedDate){
+    public void validateReview(String review){
         List<WebElement> elementsDiv = driver.findElements(By.className("product-review-item"));
         int contLap = 0;
         boolean existName = false;
@@ -69,13 +71,15 @@ public class Review {
             List<WebElement> elements = elementDiv.findElements(By.cssSelector("*"));
             for (WebElement elementLabel : elements) {
                 String label = elementLabel.getTagName();
-                System.out.println(elementLabel.getText() + " " + elementLabel.getText());
+                System.out.println(elementLabel.getText());
                 switch (label){
-                    case "span":
-                        if(elementLabel.getText().equals(userHelper.getName()))
-                            existName = true;
-                        if(elementLabel.getText().equals(formattedDate))
-                            existDate = true;
+                    case "div":
+                        if(elementLabel.getAttribute("class").equals("text-body")){
+                            if(elementLabel.getText().equals(review)){
+                                existName = true;
+                                existDate = true;
+                            }
+                        }
                         break;
                     default:
                 }
@@ -87,7 +91,7 @@ public class Review {
             contLap++;
             if(elementsDiv.size() == contLap){
                 softAssert.fail("Don't exist review");
-//                softAssert.assertAll();
+                softAssert.assertAll();
             }
         }
     }
@@ -102,6 +106,49 @@ public class Review {
 
     public  static By textAreaReview(){
         return By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/div[1]/form/div[1]/div/div[2]/textarea");
+    }
+
+    public Review validateReviewTest(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy h:mm a");
+        Date date = new Date();
+        String formattedDate = dateFormat.format(date);
+        System.out.println(formattedDate);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, -1);
+        Date newDate = calendar.getTime();
+        System.out.println(dateFormat.format(newDate));
+
+        List<WebElement> elementsDiv = driver.findElements(By.className("product-review-item"));
+        int contLap = 0;
+        boolean existName = false;
+        boolean existDate = false;
+        for (WebElement elementDiv : elementsDiv) {
+            List<WebElement> elements = elementDiv.findElements(By.cssSelector("*"));
+            for (WebElement elementLabel : elements) {
+                String label = elementLabel.getTagName();
+                System.out.println(elementLabel.getText() + " " + elementLabel.getText());
+                switch (label){
+                    case "span":
+                        if(elementLabel.getText().equals(userHelper.getName()))
+                            existName = true;
+//                        if(elementLabel.getText().equals(formattedDate))
+//                            existDate = true;
+                        break;
+                    default:
+                }
+            }
+
+            if(existName && existDate)
+                break;
+
+            contLap++;
+            if(elementsDiv.size() == contLap){
+                softAssert.fail("Don't exist review");
+                softAssert.assertAll();
+            }
+        }
+        return this;
     }
 
 }

@@ -45,9 +45,12 @@ public class TC_Digital_DownLoad_H_Product_Review_008 {
     @Then("The hot user should be see form and add review")
     public void user_should_be_see_form_review_and_add_review() {
         review
-                .createReview()
                 .IsDisplayed(review.ratingReview())
                 .IsDisplayed(review.titleReview())
-                .IsDisplayed(review.textAreaReview());
+                .IsDisplayed(review.textAreaReview())
+                .createReview();
+
+//        review
+//                .validateReviewTest();
     }
 }
